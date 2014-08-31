@@ -9,6 +9,7 @@
 #import "OWOuterSpaceTableViewController.h"
 #import "AstronomicalData.h"
 #import "OWSpaceObject.h"
+#import "OWSpaceImageViewController.h"
 
 @interface OWOuterSpaceTableViewController ()
 
@@ -42,6 +43,20 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([sender isKindOfClass:[UITableViewCell class]])
+    {
+        if ([segue.destinationViewController isKindOfClass:[OWSpaceImageViewController class]])
+        {
+            OWSpaceImageViewController *nextViewController = segue.destinationViewController;
+            NSIndexPath *path = [self.tableView indexPathForCell:sender];
+            OWSpaceObject *spaceObject = [self.planets objectAtIndex:path.row];
+            nextViewController.spaceObject = spaceObject;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning

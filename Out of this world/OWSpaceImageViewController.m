@@ -26,9 +26,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Jupiter.jpg"]];
+    self.imageView = [[UIImageView alloc] initWithImage:self.spaceObject.spaceImage];
     self.scrollView.contentSize = self.imageView.frame.size;
     [self.scrollView addSubview:self.imageView];
+    self.scrollView.delegate = self;
+    self.scrollView.maximumZoomScale = 2.0;
+    self.scrollView.minimumZoomScale = 0.5;
     
 }
 
@@ -36,6 +39,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.imageView;
 }
 
 /*
