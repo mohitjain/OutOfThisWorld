@@ -19,6 +19,7 @@
 		E418DA1D19B2C38C002B0B9D /* Uranus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E418DA1319B2C38C002B0B9D /* Uranus.jpg */; };
 		E418DA1E19B2C38C002B0B9D /* Venus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E418DA1419B2C38C002B0B9D /* Venus.jpg */; };
 		E418DA2119B2C3B8002B0B9D /* OWSpaceObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E418DA2019B2C3B8002B0B9D /* OWSpaceObject.m */; };
+		E418DA2419B2D754002B0B9D /* OWSpaceImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E418DA2319B2D754002B0B9D /* OWSpaceImageViewController.m */; };
 		E4DBDD1F19B21A6A00F22F22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DBDD1E19B21A6A00F22F22 /* Foundation.framework */; };
 		E4DBDD2119B21A6A00F22F22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DBDD2019B21A6A00F22F22 /* CoreGraphics.framework */; };
 		E4DBDD2319B21A6A00F22F22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DBDD2219B21A6A00F22F22 /* UIKit.framework */; };
@@ -60,6 +61,8 @@
 		E418DA1419B2C38C002B0B9D /* Venus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Venus.jpg; sourceTree = "<group>"; };
 		E418DA1F19B2C3B8002B0B9D /* OWSpaceObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSpaceObject.h; sourceTree = "<group>"; };
 		E418DA2019B2C3B8002B0B9D /* OWSpaceObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWSpaceObject.m; sourceTree = "<group>"; };
+		E418DA2219B2D754002B0B9D /* OWSpaceImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWSpaceImageViewController.h; sourceTree = "<group>"; };
+		E418DA2319B2D754002B0B9D /* OWSpaceImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWSpaceImageViewController.m; sourceTree = "<group>"; };
 		E4DBDD1B19B21A6A00F22F22 /* Out of this world.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Out of this world.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4DBDD1E19B21A6A00F22F22 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E4DBDD2019B21A6A00F22F22 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -145,6 +148,8 @@
 				E4DBDD5419B2331E00F22F22 /* OWOuterSpaceTableViewController.m */,
 				E4DBDD2E19B21A6A00F22F22 /* OWAppDelegate.m */,
 				E4DBDD3019B21A6A00F22F22 /* Main.storyboard */,
+				E418DA2219B2D754002B0B9D /* OWSpaceImageViewController.h */,
+				E418DA2319B2D754002B0B9D /* OWSpaceImageViewController.m */,
 				E4DBDD3619B21A6A00F22F22 /* Images.xcassets */,
 				E4DBDD2519B21A6A00F22F22 /* Supporting Files */,
 			);
@@ -305,6 +310,7 @@
 				E4DBDD2F19B21A6A00F22F22 /* OWAppDelegate.m in Sources */,
 				E4DBDD2B19B21A6A00F22F22 /* main.m in Sources */,
 				E418DA0A19B2AB4D002B0B9D /* AstronomicalData.m in Sources */,
+				E418DA2419B2D754002B0B9D /* OWSpaceImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
