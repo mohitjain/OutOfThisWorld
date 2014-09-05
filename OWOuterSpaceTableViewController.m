@@ -69,12 +69,41 @@
             targetViewController.spaceObject = spaceObject;
         }
     }
+    
+    if([segue.destinationViewController isKindOfClass:[OWAddSpaceObjectViewController class]])
+    {
+        OWAddSpaceObjectViewController *addSpaceObjectVC = segue.destinationViewController;
+        addSpaceObjectVC.delegate = self;
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - OWAddSpaceObjectViewController Delegate
+
+-(void)didCancel
+{
+    NSLog(@"Did Cancel");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)addSpaceObject:(OWSpaceObject *)spaceObject
+{
+    if (!self.addSpaceObjects) {
+        self.addSpaceObjects = [[NSMutableArray alloc] init];
+    }
+    
+    [self.addSpaceObjects addObject:spaceObject];
+    [self.planets addObject:spaceObject];
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -87,8 +116,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    return self.planets.count;
+    
+    if (section == 1) {
+        return self.addSpaceObjects.count;
+    }
+    else
+    {
+        return self.planets.count;
+    }
     
 }
 
@@ -100,11 +135,20 @@
     
     // Configure the cell...
     
-    OWSpaceObject *planet = [self.planets objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = planet.name;
-    cell.detailTextLabel.text = planet.nickName;
-    cell.imageView.image = planet.spaceImage;
+    if (indexPath.section == 1) {
+        // add code for new added objects
+        OWSpaceObject *planet = [self.addSpaceObjects objectAtIndex:indexPath.row];
+        cell.textLabel.text = planet.name;
+        cell.detailTextLabel.text = planet.nickName;
+    }
+    else
+    {
+        OWSpaceObject *planet = [self.planets objectAtIndex:indexPath.row];
+        cell.textLabel.text = planet.name;
+        cell.detailTextLabel.text = planet.nickName;
+        cell.imageView.image = planet.spaceImage;
+        
+    }
     
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
