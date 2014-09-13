@@ -255,6 +255,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = CodeBeerStartups;
 				TargetAttributes = {
+					E4DBDD1A19B21A6A00F22F22 = {
+						DevelopmentTeam = 6H9SGC8NUV;
+					};
 					E4DBDD3B19B21A6A00F22F22 = {
 						TestTargetID = E4DBDD1A19B21A6A00F22F22;
 					};
@@ -447,10 +450,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Out of this world/Out of this world-Prefix.pch";
 				INFOPLIST_FILE = "Out of this world/Out of this world-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -460,10 +466,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Out of this world/Out of this world-Prefix.pch";
 				INFOPLIST_FILE = "Out of this world/Out of this world-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
