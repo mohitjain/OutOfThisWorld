@@ -18,6 +18,25 @@
 
 @implementation OWOuterSpaceTableViewController
 
+
+#pragma mark - Lazy Instantion of properties
+
+-(NSMutableArray *) planets{
+    
+    if (!_planets) {
+        _planets = [[NSMutableArray alloc] init];
+    }
+    return _planets;
+}
+
+-(NSMutableArray *) addSpaceObjects{
+    
+    if (!_addSpaceObjects) {
+        _addSpaceObjects = [[NSMutableArray alloc] init];
+    }
+    return _addSpaceObjects;
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -31,7 +50,6 @@
 {
     [super viewDidLoad];
     
-    self.planets = [[NSMutableArray alloc] init];
     
     for (NSMutableDictionary *planetData in [AstronomicalData allKnownPlanets]) {
         NSString *imageName = [NSString stringWithFormat:@"%@.jpg", planetData[PLANET_NAME]];
@@ -95,9 +113,6 @@
 
 -(void)addSpaceObject:(OWSpaceObject *)spaceObject
 {
-    if (!self.addSpaceObjects) {
-        self.addSpaceObjects = [[NSMutableArray alloc] init];
-    }
     
     [self.addSpaceObjects addObject:spaceObject];
     [self.planets addObject:spaceObject];
