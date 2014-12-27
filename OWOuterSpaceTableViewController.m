@@ -17,7 +17,7 @@
 @end
 
 @implementation OWOuterSpaceTableViewController
-
+#define ADDED_SPACE_OBJECTS_KEY @"Added Space Objects Array"
 
 #pragma mark - Lazy Instantion of properties
 
@@ -55,6 +55,13 @@
         NSString *imageName = [NSString stringWithFormat:@"%@.jpg", planetData[PLANET_NAME]];
         OWSpaceObject *planet = [[OWSpaceObject alloc] initWithData:planetData andImage:[UIImage imageNamed:imageName]];
         [self.planets addObject:planet];
+    }
+    
+    NSArray *myPlanetAsPropertyList = [[NSUserDefaults standardUserDefaults] arrayForKey:ADDED_SPACE_OBJECTS_KEY];
+    
+    for (NSDictionary *dictionary in myPlanetAsPropertyList) {
+        OWSpaceObject *spaceObject = [self spaceObjectAsAPropertyList:dictionary];
+        [self.addSpaceObjects addObject:spaceObject];
     }
     
     // Uncomment the following line to preserve selection between presentations.
@@ -116,9 +123,48 @@
     
     [self.addSpaceObjects addObject:spaceObject];
     [self.planets addObject:spaceObject];
-
+    // Will save to NSUserDetaults
+    NSMutableArray *spaceObjectsAsPropertiesList = [[[NSUserDefaults standardUserDefaults] arrayForKey:ADDED_SPACE_OBJECTS_KEY] mutableCopy];
+    
+    if (!spaceObjectsAsPropertiesList) {
+        spaceObjectsAsPropertiesList = [[NSMutableArray alloc] init];
+    }
+    
+    [spaceObjectsAsPropertiesList addObject:[self spaceObjectAsAPropertyList:spaceObject]];
+    [[NSUserDefaults standardUserDefaults] setObject:spaceObjectsAsPropertiesList forKey:ADDED_SPACE_OBJECTS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.tableView reloadData];
+}
+
+
+#pragma mark - Helper Methods
+
+-(NSDictionary *)spaceObjectAsAPropertyList:(OWSpaceObject *) spaceObject
+{
+    NSData *imageData = UIImagePNGRepresentation(spaceObject.spaceImage);
+    NSDictionary *dictionary = @{
+                                    PLANET_NAME: spaceObject.name,
+                                    PLANET_GRAVITY: @(spaceObject.gravitianalForce),
+                                    PLANET_DIAMETER: @(spaceObject.diameter),
+                                    PLANET_YEAR_LENGTH: @(spaceObject.yearLength),
+                                    PLANET_DAY_LENGTH: @(spaceObject.dayLength),
+                                    PLANET_TEMPERATURE: @(spaceObject.temperature),
+                                    PLANET_NUMBER_OF_MOONS: @(spaceObject.numberOfMoons),
+                                    PLANET_NICKNAME: spaceObject.nickName,
+                                    PLANET_INTERESTING_FACT: spaceObject.interestingFact,
+                                    PLANET_IMAGE: imageData
+                                 };
+    return dictionary;
+}
+
+
+-(OWSpaceObject *)spaceObjectForDictionary:(NSDictionary *) dictionary
+{
+    OWSpaceObject *spaceObject = [[OWSpaceObject alloc] initWithData:dictionary andImage:[UIImage imageNamed:@"EinsteinRing.jpg"]];
+    return spaceObject;
 }
 
 #pragma mark - Table view data source
